@@ -38,9 +38,9 @@ do
     string codeFile = "";
 
     if (command == "1" || command == "2")
-        codeFile = System.IO.File.ReadAllText("../sample-code/function/function.cs");
+        codeFile = File.ReadAllText("D:\\STSA\\learn-ai-102-code\\src\\CS\\sample-code\\function\\function.cs");
     else if (command == "3")
-        codeFile = System.IO.File.ReadAllText("../sample-code/go-fish/go-fish.cs");
+        codeFile = File.ReadAllText("D:\\STSA\\learn-ai-102-code\\src\\CS\\sample-code\\go-fish\\go-fish.cs");
     else
     {
         WriteLine("Invalid input. Please try again.");
@@ -95,10 +95,10 @@ async Task GetResponseFromOpenAIForCodeGeneration(string prompt)
     }
 
     // Write the file.
-    File.WriteAllText("result/app.txt", completion);
+    File.WriteAllText("D:\\STSA\\learn-ai-102-code\\src\\CS\\AzOpenAIService\\Results\\app.txt", completion);
 
     // Write response to console
-    WriteLine($"\nResponse written to result/app.txt\n\n");
+    WriteLine($"\nResponse written to Results/app.txt\n\n");
 }
 
 
