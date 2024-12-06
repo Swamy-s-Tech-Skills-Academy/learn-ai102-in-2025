@@ -16,6 +16,9 @@ bool printFullResponse = false;
 
 
 // *************** Use your own data - RAG with Azure OpenAI Service ***************
+// Flag to show citations
+bool showCitations = false;
+
 
 // *************** Use your own data - RAG with Azure OpenAI Service ***************
 
