@@ -17,7 +17,7 @@ bool printFullResponse = false;
 
 // *************** Use your own data - RAG with Azure OpenAI Service ***************
 // Flag to show citations
-bool showCitations = false;
+bool showCitations = true;
 
 if (string.IsNullOrEmpty(appConfig.AzureOpenAiEndpoint) || string.IsNullOrEmpty(appConfig.AzureOpenAiKey) || string.IsNullOrEmpty(appConfig.AzureOpenAiDeploymentName))
 {
@@ -65,15 +65,18 @@ ChatResponseMessage responseMessage = response.Choices[0].Message;
 
 // Print response
 WriteLine("Response: " + responseMessage.Content + "\n");
-WriteLine("  Intent: " + responseMessage.AzureExtensionsContext.Intent);
+WriteLine("  Intent: " + responseMessage.AzureExtensionsContext?.Intent);
 
 if (showCitations)
 {
     WriteLine($"\n  Citations of data used:");
 
-    foreach (AzureChatExtensionDataSourceResponseCitation citation in responseMessage.AzureExtensionsContext.Citations)
+    if (responseMessage.AzureExtensionsContext is not null)
     {
-        WriteLine($"    Citation: {citation.Title} - {citation.Url}");
+        foreach (AzureChatExtensionDataSourceResponseCitation citation in responseMessage.AzureExtensionsContext.Citations)
+        {
+            WriteLine($"    Citation: {citation.Title} - {citation.Url}");
+        }
     }
 }
 // *************** Use your own data - RAG with Azure OpenAI Service ***************
