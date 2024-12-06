@@ -14,6 +14,12 @@ IFooter footer = host.Services.GetRequiredService<IFooter>();
 AzAISvcAppConfiguration appConfig = host.Services.GetRequiredService<AzAISvcAppConfiguration>();
 bool printFullResponse = false;
 
+
+// *************** Use your own data - RAG with Azure OpenAI Service ***************
+
+// *************** Use your own data - RAG with Azure OpenAI Service ***************
+
+
 // *************** Generate and improve code with Azure OpenAI Service ***************
 string command;
 
@@ -100,6 +106,5 @@ async Task GetResponseFromOpenAIForCodeGeneration(string prompt)
     // Write response to console
     WriteLine($"\nResponse written to Results/app.txt\n\n");
 }
-
 
 // *************** Generate and improve code with Azure OpenAI Service ***************
