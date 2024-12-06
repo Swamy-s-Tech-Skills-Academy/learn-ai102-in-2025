@@ -30,7 +30,7 @@ OpenAIClient openAIClient = new(new Uri(appConfig.AzureOpenAiEndpoint), new Azur
 
 // Get the prompt text
 WriteLine("Enter a question:");
-string text = ReadLine() ?? "";
+string inputPrompt = ReadLine() ?? "";
 
 // Configure your data source
 AzureSearchChatExtensionConfiguration ownDataConfig = new()
@@ -42,13 +42,13 @@ AzureSearchChatExtensionConfiguration ownDataConfig = new()
 
 // Send request to Azure OpenAI model  
 WriteLine("...Sending the following request to Azure OpenAI endpoint...");
-WriteLine("Request: " + text + "\n");
+WriteLine("Request: " + inputPrompt + "\n");
 
 ChatCompletionsOptions chatCompletionsOptions = new()
 {
     Messages =
     {
-        new ChatRequestUserMessage(text)
+        new ChatRequestUserMessage(inputPrompt)
     },
     MaxTokens = 600,
     Temperature = 0.9f,
