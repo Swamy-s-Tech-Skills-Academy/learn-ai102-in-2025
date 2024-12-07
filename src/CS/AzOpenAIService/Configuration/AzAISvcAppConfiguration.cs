@@ -11,4 +11,10 @@ public class AzAISvcAppConfiguration
     public string? AzureOpenAiKey { get; set; }
 
     public string? AzureOpenAiDeploymentName { get; set; }
+
+    public string? AzureSearchEndpoint { get; set; }
+
+    public string? AzureSearchKey { get; set; }
+
+    public string? AzureSearchIndex { get; set; }
 }
