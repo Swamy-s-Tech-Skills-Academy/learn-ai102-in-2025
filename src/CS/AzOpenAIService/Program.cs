@@ -12,119 +12,56 @@ using IHost host = IHostExtensions.GetHostBuilder(args);
 IHeader header = host.Services.GetRequiredService<IHeader>();
 IFooter footer = host.Services.GetRequiredService<IFooter>();
 AzAISvcAppConfiguration appConfig = host.Services.GetRequiredService<AzAISvcAppConfiguration>();
-bool printFullResponse = false;
 
+await ShowRAGWithAzureOpenAIDemo();
 
-// *************** Use your own data - RAG with Azure OpenAI Service ***************
-// Flag to show citations
-bool showCitations = true;
-
-if (string.IsNullOrEmpty(appConfig.AzureOpenAiEndpoint) || string.IsNullOrEmpty(appConfig.AzureOpenAiKey) || string.IsNullOrEmpty(appConfig.AzureOpenAiDeploymentName))
-{
-    WriteLine("Please check your appsettings.json file for missing or incorrect values.");
-    return;
-}
-
-// Configure the Azure OpenAI client
-OpenAIClient openAIClient = new(new Uri(appConfig.AzureOpenAiEndpoint), new AzureKeyCredential(appConfig.AzureOpenAiKey));
-
-// Get the prompt text
-WriteLine("Enter a question:");
-string inputPrompt = ReadLine() ?? "";
-
-// Configure your data source
-AzureSearchChatExtensionConfiguration ownDataConfig = new()
-{
-    SearchEndpoint = new Uri(appConfig.AzureSearchEndpoint!),
-    Authentication = new OnYourDataApiKeyAuthenticationOptions(appConfig.AzureSearchKey),
-    IndexName = appConfig.AzureSearchIndex
-};
-
-// Send request to Azure OpenAI model  
-WriteLine("...Sending the following request to Azure OpenAI endpoint...");
-WriteLine("Request: " + inputPrompt + "\n");
-
-const string systemMessage = "You are a helpful assistant assisting users with travel recommendations.";
-
-ChatCompletionsOptions chatCompletionsOptions = new()
-{
-    Messages =
-    {
-        new ChatRequestSystemMessage(systemMessage),
-        new ChatRequestUserMessage(inputPrompt)
-    },
-    MaxTokens = 600,
-    Temperature = 0.9f,
-    DeploymentName = appConfig.AzureOpenAiDeploymentName,
-    // Specify extension options
-    AzureExtensionsOptions = new AzureChatExtensionsOptions()
-    {
-        Extensions = { ownDataConfig }
-    }
-};
-
-ChatCompletions response = openAIClient.GetChatCompletions(chatCompletionsOptions);
-ChatResponseMessage responseMessage = response.Choices[0].Message;
-
-// Print response
-WriteLine("Response: " + responseMessage.Content + "\n");
-WriteLine("  Intent: " + responseMessage.AzureExtensionsContext?.Intent);
-
-if (showCitations)
-{
-    WriteLine($"\n  Citations of data used:");
-
-    if (responseMessage.AzureExtensionsContext is not null)
-    {
-        foreach (AzureChatExtensionDataSourceResponseCitation citation in responseMessage.AzureExtensionsContext.Citations)
-        {
-            WriteLine($"    Citation: {citation.Title} - {citation.Url}");
-        }
-    }
-}
-// *************** Use your own data - RAG with Azure OpenAI Service ***************
-
+await ShowGenerateCodeWithAzureOpenAIDemo();
 
 // *************** Generate and improve code with Azure OpenAI Service ***************
-string command;
-
-do
+async Task ShowGenerateCodeWithAzureOpenAIDemo()
 {
-    WriteLine("\n1: Add comments to my function\n" +
-    "2: Write unit tests for my function\n" +
-    "3: Fix my Go Fish game\n" +
-    "\"quit\" to exit the program\n\n" +
-    "Enter a number to select a task:");
+    string command;
 
-    command = ReadLine() ?? "";
-
-    if (command == "quit")
+    do
     {
-        WriteLine("Exiting program...");
-        break;
-    }
+        WriteLine("\n1: Add comments to my function\n" +
+        "2: Write unit tests for my function\n" +
+        "3: Fix my Go Fish game\n" +
+        "\"quit\" to exit the program\n\n" +
+        "Enter a number to select a task:");
 
-    WriteLine("\nEnter a prompt: ");
-    string userPrompt = ReadLine() ?? "";
-    string codeFile = "";
+        command = ReadLine() ?? "";
 
-    if (command == "1" || command == "2")
-        codeFile = File.ReadAllText("D:\\STSA\\learn-ai-102-code\\src\\CS\\sample-code\\function\\function.cs");
-    else if (command == "3")
-        codeFile = File.ReadAllText("D:\\STSA\\learn-ai-102-code\\src\\CS\\sample-code\\go-fish\\go-fish.cs");
-    else
-    {
-        WriteLine("Invalid input. Please try again.");
-        continue;
-    }
+        if (command == "quit")
+        {
+            WriteLine("Exiting program...");
+            break;
+        }
 
-    userPrompt += codeFile;
+        WriteLine("\nEnter a prompt: ");
+        string userPrompt = ReadLine() ?? "";
+        string codeFile = "";
 
-    await GetResponseFromOpenAIForCodeGeneration(userPrompt);
-} while (true);
+        if (command == "1" || command == "2")
+            codeFile = File.ReadAllText("D:\\STSA\\learn-ai-102-code\\src\\CS\\sample-code\\function\\function.cs");
+        else if (command == "3")
+            codeFile = File.ReadAllText("D:\\STSA\\learn-ai-102-code\\src\\CS\\sample-code\\go-fish\\go-fish.cs");
+        else
+        {
+            WriteLine("Invalid input. Please try again.");
+            continue;
+        }
+
+        userPrompt += codeFile;
+
+        await GetResponseFromOpenAIForCodeGeneration(userPrompt);
+    } while (true);
+}
 
 async Task GetResponseFromOpenAIForCodeGeneration(string prompt)
 {
+    bool printFullResponse = false;
+
     WriteLine("\nCalling Azure OpenAI to generate code...\n\n");
 
     if (string.IsNullOrEmpty(appConfig.AzureOpenAiEndpoint) || string.IsNullOrEmpty(appConfig.AzureOpenAiKey) || string.IsNullOrEmpty(appConfig.AzureOpenAiDeploymentName))
@@ -171,5 +108,78 @@ async Task GetResponseFromOpenAIForCodeGeneration(string prompt)
     // Write response to console
     WriteLine($"\nResponse written to Results/app.txt\n\n");
 }
-
 // *************** Generate and improve code with Azure OpenAI Service ***************
+
+
+// *************** Use your own data - RAG with Azure OpenAI Service ***************
+async Task ShowRAGWithAzureOpenAIDemo()
+{
+    // Flag to show citations
+    bool showCitations = true;
+
+    if (string.IsNullOrEmpty(appConfig.AzureOpenAiEndpoint) || string.IsNullOrEmpty(appConfig.AzureOpenAiKey) || string.IsNullOrEmpty(appConfig.AzureOpenAiDeploymentName))
+    {
+        WriteLine("Please check your appsettings.json file for missing or incorrect values.");
+        return;
+    }
+
+    // Configure the Azure OpenAI client
+    OpenAIClient openAIClient = new(new Uri(appConfig.AzureOpenAiEndpoint), new AzureKeyCredential(appConfig.AzureOpenAiKey));
+
+    // Get the prompt text
+    WriteLine("Enter a question:");
+    string inputPrompt = ReadLine() ?? "";
+
+    // Configure your data source
+    AzureSearchChatExtensionConfiguration ownDataConfig = new()
+    {
+        SearchEndpoint = new Uri(appConfig.AzureSearchEndpoint!),
+        Authentication = new OnYourDataApiKeyAuthenticationOptions(appConfig.AzureSearchKey),
+        IndexName = appConfig.AzureSearchIndex
+    };
+
+    // Send request to Azure OpenAI model  
+    WriteLine("...Sending the following request to Azure OpenAI endpoint...");
+    WriteLine("Request: " + inputPrompt + "\n");
+
+    const string systemMessage = "You are a helpful assistant assisting users with travel recommendations.";
+
+    ChatCompletionsOptions chatCompletionsOptions = new()
+    {
+        Messages =
+        {
+            new ChatRequestSystemMessage(systemMessage),
+            new ChatRequestUserMessage(inputPrompt)
+        },
+        MaxTokens = 600,
+        Temperature = 0.9f,
+        DeploymentName = appConfig.AzureOpenAiDeploymentName,
+        // Specify extension options
+        AzureExtensionsOptions = new AzureChatExtensionsOptions()
+        {
+            Extensions = { ownDataConfig }
+        }
+    };
+
+    ChatCompletions response = await openAIClient.GetChatCompletionsAsync(chatCompletionsOptions);
+    ChatResponseMessage responseMessage = response.Choices[0].Message;
+
+    // Print response
+    WriteLine("Response: " + responseMessage.Content + "\n");
+    WriteLine("  Intent: " + responseMessage.AzureExtensionsContext?.Intent);
+
+    if (showCitations)
+    {
+        WriteLine($"\n  Citations of data used:");
+
+        if (responseMessage.AzureExtensionsContext is not null)
+        {
+            foreach (AzureChatExtensionDataSourceResponseCitation citation in responseMessage.AzureExtensionsContext.Citations)
+            {
+                WriteLine($"    Citation: {citation.Title} - {citation.Url}");
+            }
+        }
+    }
+
+}
+// *************** Use your own data - RAG with Azure OpenAI Service ***************
