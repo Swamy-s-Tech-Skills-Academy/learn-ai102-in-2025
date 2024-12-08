@@ -44,10 +44,13 @@ AzureSearchChatExtensionConfiguration ownDataConfig = new()
 WriteLine("...Sending the following request to Azure OpenAI endpoint...");
 WriteLine("Request: " + inputPrompt + "\n");
 
+const string systemMessage = "You are a helpful assistant assisting users with travel recommendations.";
+
 ChatCompletionsOptions chatCompletionsOptions = new()
 {
     Messages =
     {
+        new ChatRequestSystemMessage(systemMessage),
         new ChatRequestUserMessage(inputPrompt)
     },
     MaxTokens = 600,
