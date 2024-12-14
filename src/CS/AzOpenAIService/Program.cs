@@ -14,7 +14,6 @@ IHeader header = host.Services.GetRequiredService<IHeader>();
 IFooter footer = host.Services.GetRequiredService<IFooter>();
 AzAISvcAppConfiguration appConfig = host.Services.GetRequiredService<AzAISvcAppConfiguration>();
 
-//await RAGWithAzureOpenAIService.ShowRAGWithAzureOpenAIDemo(appConfig);
-
 await GenerateCodeWithAzureOpenAIService.ShowGenerateCodeWithAzureOpenAIDemo(appConfig);
 
+await RAGWithAzureOpenAIService.ShowRAGWithAzureOpenAIDemo(appConfig);
