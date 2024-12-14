@@ -1,7 +1,7 @@
-﻿using Azure.AI.OpenAI;
+﻿using AzOpenAIService.Configuration;
 using Azure;
+using Azure.AI.OpenAI;
 using System.Text.Json;
-using AzOpenAIService.Configuration;
 
 namespace AzOpenAIService.Services;
 

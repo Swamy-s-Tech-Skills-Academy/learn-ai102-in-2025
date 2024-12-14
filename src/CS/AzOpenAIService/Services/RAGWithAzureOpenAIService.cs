@@ -1,6 +1,6 @@
-﻿using Azure.AI.OpenAI;
+﻿using AzOpenAIService.Configuration;
 using Azure;
-using AzOpenAIService.Configuration;
+using Azure.AI.OpenAI;
 
 namespace AzOpenAIService.Services;
 

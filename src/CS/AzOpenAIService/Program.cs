@@ -1,12 +1,9 @@
 ﻿using AzOpenAIService.Configuration;
 using AzOpenAIService.Extensions;
 using AzOpenAIService.Services;
-using Azure;
-using Azure.AI.OpenAI;
 using HeaderFooter.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.Text.Json;
 
 using IHost host = IHostExtensions.GetHostBuilder(args);
 
