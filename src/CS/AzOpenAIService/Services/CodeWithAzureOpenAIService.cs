@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace AzOpenAIService.Services;
 
-internal static class GenerateCodeWithAzureOpenAIService
+internal static class CodeWithAzureOpenAIService
 {
     const string folderPath = @"D:\STSA\learn-ai102-in-2025\src\CS";
 
