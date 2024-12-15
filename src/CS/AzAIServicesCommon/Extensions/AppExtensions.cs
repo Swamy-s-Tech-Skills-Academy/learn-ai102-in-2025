@@ -2,7 +2,7 @@
 using HeaderFooter.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace AzOpenAIService.Extensions;
+namespace AzAIServicesCommon.Extensions;
 
 public static class AppExtensions
 {

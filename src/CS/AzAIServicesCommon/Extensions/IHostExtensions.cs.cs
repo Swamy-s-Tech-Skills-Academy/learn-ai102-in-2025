@@ -1,9 +1,9 @@
-﻿using AzOpenAIService.Configuration;
+﻿using AzAIServicesCommon.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace AzOpenAIService.Extensions;
+namespace AzAIServicesCommon.Extensions;
 
 public static class IHostExtensions
 {

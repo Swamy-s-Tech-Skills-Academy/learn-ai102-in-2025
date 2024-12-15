@@ -1,4 +1,4 @@
-﻿namespace AzOpenAIService.Configuration;
+﻿namespace AzAIServicesCommon.Configuration;
 
 public class AzAISvcAppConfiguration
 {
