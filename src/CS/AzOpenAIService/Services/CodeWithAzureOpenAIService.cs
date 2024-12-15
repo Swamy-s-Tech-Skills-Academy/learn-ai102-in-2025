@@ -48,7 +48,7 @@ internal static class CodeWithAzureOpenAIService
                 continue;
             }
 
-            userPrompt += "";
+            userPrompt += codeFile;
 
             await GetResponseFromOpenAIForCodeGeneration(userPrompt, appConfig);
         } while (true);
