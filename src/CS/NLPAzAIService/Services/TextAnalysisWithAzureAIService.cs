@@ -35,18 +35,18 @@ internal sealed class TextAnalysisWithAzureAIService
                 ForegroundColor = ConsoleColor.White;
                 WriteLine("\n-------------\n" + file.Name);
                 StreamReader sr = file.OpenText();
-                var text = sr.ReadToEnd();
+                var text = await sr.ReadToEndAsync();
                 sr.Close();
                 WriteLine("\n" + text);
 
                 // Get language
                 ForegroundColor = ConsoleColor.DarkCyan;
-                DetectedLanguage detectedLanguage = textAnalyticsClient.DetectLanguage(text);
+                DetectedLanguage detectedLanguage = await textAnalyticsClient.DetectLanguageAsync(text);
                 WriteLine($"\nLanguage: {detectedLanguage.Name}");
 
                 // Get key phrases
                 ForegroundColor = ConsoleColor.DarkYellow;
-                KeyPhraseCollection phrases = textAnalyticsClient.ExtractKeyPhrases(text);
+                KeyPhraseCollection phrases = await textAnalyticsClient.ExtractKeyPhrasesAsync(text);
                 if (phrases.Count > 0)
                 {
                     WriteLine("\nKey Phrases:");
@@ -58,12 +58,12 @@ internal sealed class TextAnalysisWithAzureAIService
 
                 // Get sentiment
                 ForegroundColor = ConsoleColor.DarkGreen;
-                DocumentSentiment sentimentAnalysis = textAnalyticsClient.AnalyzeSentiment(text);
+                DocumentSentiment sentimentAnalysis = await textAnalyticsClient.AnalyzeSentimentAsync(text);
                 WriteLine($"\nSentiment: {sentimentAnalysis.Sentiment}");
 
                 // Get entities
                 ForegroundColor = ConsoleColor.Magenta;
-                CategorizedEntityCollection entities = textAnalyticsClient.RecognizeEntities(text);
+                CategorizedEntityCollection entities = await textAnalyticsClient.RecognizeEntitiesAsync(text);
                 if (entities.Count > 0)
                 {
                     Console.WriteLine("\nEntities:");
@@ -75,7 +75,7 @@ internal sealed class TextAnalysisWithAzureAIService
 
                 // Get linked entities
                 ForegroundColor = ConsoleColor.Blue;
-                LinkedEntityCollection linkedEntities = textAnalyticsClient.RecognizeLinkedEntities(text);
+                LinkedEntityCollection linkedEntities = await textAnalyticsClient.RecognizeLinkedEntitiesAsync(text);
                 if (linkedEntities.Count > 0)
                 {
                     WriteLine("\nLinks:");
