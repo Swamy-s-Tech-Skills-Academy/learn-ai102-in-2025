@@ -23,7 +23,7 @@ internal sealed class TextAnalysisWithAzureAIService
             // Create client using endpoint and key
             AzureKeyCredential credentials = new(aiSvcKey);
             Uri endpoint = new(aiSvcEndpoint);
-            TextAnalyticsClient aiClient = new(endpoint, credentials);
+            TextAnalyticsClient textAnalyticsClient = new(endpoint, credentials);
 
             // Analyze each text file in the reviews folder
             var folderPath = Path.GetFullPath(@"D:\STSA\learn-ai102-in-2025\src\Data\TextAnalysis\reviews");
@@ -41,17 +41,12 @@ internal sealed class TextAnalysisWithAzureAIService
 
                 // Get language
                 ForegroundColor = ConsoleColor.DarkCyan;
-                DetectedLanguage detectedLanguage = aiClient.DetectLanguage(text);
+                DetectedLanguage detectedLanguage = textAnalyticsClient.DetectLanguage(text);
                 WriteLine($"\nLanguage: {detectedLanguage.Name}");
-
-                // Get sentiment
-                ForegroundColor = ConsoleColor.DarkGreen;
-                DocumentSentiment sentimentAnalysis = aiClient.AnalyzeSentiment(text);
-                WriteLine($"\nSentiment: {sentimentAnalysis.Sentiment}");
 
                 // Get key phrases
                 ForegroundColor = ConsoleColor.DarkYellow;
-                KeyPhraseCollection phrases = aiClient.ExtractKeyPhrases(text);
+                KeyPhraseCollection phrases = textAnalyticsClient.ExtractKeyPhrases(text);
                 if (phrases.Count > 0)
                 {
                     WriteLine("\nKey Phrases:");
@@ -61,9 +56,14 @@ internal sealed class TextAnalysisWithAzureAIService
                     }
                 }
 
+                // Get sentiment
+                ForegroundColor = ConsoleColor.DarkGreen;
+                DocumentSentiment sentimentAnalysis = textAnalyticsClient.AnalyzeSentiment(text);
+                WriteLine($"\nSentiment: {sentimentAnalysis.Sentiment}");
+
                 // Get entities
                 ForegroundColor = ConsoleColor.Magenta;
-                CategorizedEntityCollection entities = aiClient.RecognizeEntities(text);
+                CategorizedEntityCollection entities = textAnalyticsClient.RecognizeEntities(text);
                 if (entities.Count > 0)
                 {
                     Console.WriteLine("\nEntities:");
@@ -75,7 +75,7 @@ internal sealed class TextAnalysisWithAzureAIService
 
                 // Get linked entities
                 ForegroundColor = ConsoleColor.Blue;
-                LinkedEntityCollection linkedEntities = aiClient.RecognizeLinkedEntities(text);
+                LinkedEntityCollection linkedEntities = textAnalyticsClient.RecognizeLinkedEntities(text);
                 if (linkedEntities.Count > 0)
                 {
                     WriteLine("\nLinks:");
@@ -84,6 +84,7 @@ internal sealed class TextAnalysisWithAzureAIService
                         WriteLine($"\t{linkedEntity.Name} ({linkedEntity.Url})");
                     }
                 }
+
                 ResetColor();
             }
         }
