@@ -5,9 +5,10 @@ using System.Text.Json;
 
 namespace AzOpenAIService.Services;
 
-internal static class GenerateCodeWithAzureOpenAIService
+internal static class CodeWithAzureOpenAIService
 {
-    const string folderPath = @"D:\STSA\learn-ai102-in-2025\src\CS";
+    const string inputFolderPath = @"D:\STSA\learn-ai102-in-2025\src\Data\AOI\sample-code";
+    const string outputFilePath = @"D:\STSA\learn-ai102-in-2025\src\Data\AOI\Results\app.txt";
 
     // *************** Generate and improve code with Azure OpenAI Service ***************
     public static async Task ShowGenerateCodeWithAzureOpenAIDemo(AzAISvcAppConfiguration appConfig)
@@ -36,11 +37,11 @@ internal static class GenerateCodeWithAzureOpenAIService
 
             if (command is "1" or "2")
             {
-                codeFile = File.ReadAllText(@$"{folderPath}\sample-code\function\function.cs");
+                codeFile = File.ReadAllText(@$"{inputFolderPath}\function\function.cs");
             }
             else if (command is "3")
             {
-                codeFile = File.ReadAllText(@$"{folderPath}\sample-code\go-fish\go-fish.cs");
+                codeFile = File.ReadAllText(@$"{inputFolderPath}\go-fish\go-fish.cs");
             }
             else
             {
@@ -48,7 +49,7 @@ internal static class GenerateCodeWithAzureOpenAIService
                 continue;
             }
 
-            userPrompt += "";
+            userPrompt += codeFile;
 
             await GetResponseFromOpenAIForCodeGeneration(userPrompt, appConfig);
         } while (true);
@@ -99,10 +100,10 @@ internal static class GenerateCodeWithAzureOpenAIService
         }
 
         // Write the file.
-        File.WriteAllText(@$"{folderPath}\AzOpenAIService\Results\app.txt", completion);
+        File.WriteAllText(@$"{outputFilePath}", completion);
 
         // Write response to console
-        WriteLine($"\nResponse written to Results/app.txt\n\n");
+        WriteLine($"\nResponse written to {outputFilePath}\n\n");
     }
 
 }
