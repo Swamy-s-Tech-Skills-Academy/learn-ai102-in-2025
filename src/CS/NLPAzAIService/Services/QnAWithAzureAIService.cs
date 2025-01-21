@@ -25,6 +25,8 @@ internal sealed class QnAWithAzureAIService
         string projectName = appConfig.QAProjectName!;
         string deploymentName = appConfig.QADeploymentName!;
 
+        ForegroundColor = ConsoleColor.DarkYellow;
+
         try
         {
             // Create client using endpoint and key
@@ -56,8 +58,11 @@ internal sealed class QnAWithAzureAIService
         }
         catch (Exception ex)
         {
-            ResetColor();
             WriteLine(ex.Message);
+        }
+        finally
+        {
+            ResetColor();
         }
     }
 }
