@@ -20,5 +20,9 @@ public class AzAISvcAppConfiguration
 
     public string? QAProjectName { get; set; }
 
+    public string? AILanguageServiceEndpoint { get; set; }
+
+    public string? AILanguageServiceKey { get; set; }
+
     public string? QADeploymentName { get; set; }
 }
