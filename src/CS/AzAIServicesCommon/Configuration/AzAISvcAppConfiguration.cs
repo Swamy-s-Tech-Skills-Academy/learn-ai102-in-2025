@@ -17,4 +17,12 @@ public class AzAISvcAppConfiguration
     public string? AzureSearchKey { get; set; }
 
     public string? AzureSearchIndex { get; set; }
+
+    public string? QAProjectName { get; set; }
+
+    public string? AILanguageServiceEndpoint { get; set; }
+
+    public string? AILanguageServiceKey { get; set; }
+
+    public string? QADeploymentName { get; set; }
 }

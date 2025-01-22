@@ -9,14 +9,14 @@ internal sealed class TextAnalysisWithAzureAIService
 
     public static async Task ShowTextAnalysisWithAzureAIServiceDemo(AzAISvcAppConfiguration appConfig)
     {
-        string aiSvcEndpoint = appConfig.AiServicesEndpoint!;
-        string aiSvcKey = appConfig.AiServicesKey!;
-
         if (string.IsNullOrEmpty(appConfig.AiServicesEndpoint) || string.IsNullOrEmpty(appConfig.AiServicesKey))
         {
             WriteLine("Please check your appsettings.json file for missing or incorrect values.");
             return;
         }
+
+        string aiSvcEndpoint = appConfig.AiServicesEndpoint!;
+        string aiSvcKey = appConfig.AiServicesKey!;
 
         try
         {
