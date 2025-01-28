@@ -43,8 +43,8 @@ internal sealed class CLUWithAzureAIService
                 {
 
                     // Call the Language service model to get intent and entities
-                    var projectName = "Clock";
-                    var deploymentName = "production";
+                    var projectName = "ClockV1";
+                    var deploymentName = "productionv1";
 
                     var data = new
                     {
