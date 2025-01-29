@@ -11,6 +11,8 @@ IHeader header = host.Services.GetRequiredService<IHeader>();
 IFooter footer = host.Services.GetRequiredService<IFooter>();
 AzAISvcAppConfiguration appConfig = host.Services.GetRequiredService<AzAISvcAppConfiguration>();
 
+await CLUWithAzureAIService.ShowCLUDemoWithAzureAIService(appConfig);
+
 await QnAWithAzureAIService.ShowQnAWithAzureAIServiceDemo(appConfig);
 
 await TextAnalysisWithAzureAIService.ShowTextAnalysisWithAzureAIServiceDemo(appConfig);

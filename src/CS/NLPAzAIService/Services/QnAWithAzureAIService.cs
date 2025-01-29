@@ -1,7 +1,6 @@
 ﻿using AzAIServicesCommon.Configuration;
 using Azure;
 using Azure.AI.Language.QuestionAnswering;
-using Azure.AI.TextAnalytics;
 
 namespace NLPAzAIService.Services;
 
