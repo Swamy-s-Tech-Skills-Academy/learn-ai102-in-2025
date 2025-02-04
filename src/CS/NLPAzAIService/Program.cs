@@ -37,6 +37,10 @@ try
     // Read each text file in the articles folder
     List<string> batchedDocuments = [];
 
+    ForegroundColor = ConsoleColor.DarkCyan;
+
+    WriteLine("***** This app uses the Azure Language Understanding service to analyze text input. *****");
+    WriteLine("Reading text files from the articles folder...");
     var folderPath = Path.GetFullPath(@"D:\STSA\learn-ai102-in-2025\src\Data\TextAnalysis\articles");
     DirectoryInfo folder = new(folderPath);
     FileInfo[] files = folder.GetFiles("*.txt");
@@ -50,10 +54,11 @@ try
     }
 
     // Get Classifications
-    // Get Classifications
+    WriteLine("Classifying text files...");
     ClassifyDocumentOperation operation = await textAnalyticsClient.SingleLabelClassifyAsync(WaitUntil.Completed, batchedDocuments, projectName, deploymentName);
 
     int fileNo = 0;
+    WriteLine("Results of Text Classification:");
     await foreach (ClassifyDocumentResultCollection documentsInPage in operation.Value)
     {
 
@@ -83,8 +88,13 @@ try
 }
 catch (Exception ex)
 {
+    ForegroundColor = ConsoleColor.Red;
     WriteLine(ex.Message);
     throw;
+}
+finally
+{
+    ResetColor();
 }
 // Custom Language Understanding with Azure AI Service
 
