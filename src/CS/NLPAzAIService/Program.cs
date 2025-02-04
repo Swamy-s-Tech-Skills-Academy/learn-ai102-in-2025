@@ -1,12 +1,11 @@
 ﻿using AzAIServicesCommon.Configuration;
 using AzAIServicesCommon.Extensions;
+using Azure;
+using Azure.AI.TextAnalytics;
 using HeaderFooter.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NLPAzAIService.Services;
-
-using Azure;
-using Azure.AI.TextAnalytics;
 
 using IHost host = IHostExtensions.GetHostBuilder(args);
 
