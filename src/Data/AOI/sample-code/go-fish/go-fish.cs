@@ -1,5 +1,4 @@
-
-namespace GoFish
+namespace CSharp
 {
     class Program
     {
