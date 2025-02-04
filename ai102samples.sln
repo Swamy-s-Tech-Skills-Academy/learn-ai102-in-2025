@@ -62,8 +62,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp", "src\Data\AOI\samp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "articles", "articles", "{4A54463D-9883-4C70-8DDB-1A412822E1A7}"
 	ProjectSection(SolutionItems) = preProject
-		src\Data\TextAnalysis\articles\test1.txt = src\Data\TextAnalysis\articles\test1.txt
-		src\Data\TextAnalysis\articles\test2.txt = src\Data\TextAnalysis\articles\test2.txt
+		src\Data\TextAnalysis\articles\Article 1.txt = src\Data\TextAnalysis\articles\Article 1.txt
+		src\Data\TextAnalysis\articles\Article 10.txt = src\Data\TextAnalysis\articles\Article 10.txt
+		src\Data\TextAnalysis\articles\Article 11.txt = src\Data\TextAnalysis\articles\Article 11.txt
+		src\Data\TextAnalysis\articles\Article 12.txt = src\Data\TextAnalysis\articles\Article 12.txt
+		src\Data\TextAnalysis\articles\Article 13.txt = src\Data\TextAnalysis\articles\Article 13.txt
+		src\Data\TextAnalysis\articles\Article 2.txt = src\Data\TextAnalysis\articles\Article 2.txt
+		src\Data\TextAnalysis\articles\Article 3.txt = src\Data\TextAnalysis\articles\Article 3.txt
+		src\Data\TextAnalysis\articles\Article 4.txt = src\Data\TextAnalysis\articles\Article 4.txt
+		src\Data\TextAnalysis\articles\Article 5.txt = src\Data\TextAnalysis\articles\Article 5.txt
+		src\Data\TextAnalysis\articles\Article 6.txt = src\Data\TextAnalysis\articles\Article 6.txt
+		src\Data\TextAnalysis\articles\Article 7.txt = src\Data\TextAnalysis\articles\Article 7.txt
+		src\Data\TextAnalysis\articles\Article 8.txt = src\Data\TextAnalysis\articles\Article 8.txt
+		src\Data\TextAnalysis\articles\Article 9.txt = src\Data\TextAnalysis\articles\Article 9.txt
 	EndProjectSection
 EndProject
 Global
