@@ -25,4 +25,12 @@ public class AzAISvcAppConfiguration
     public string? AILanguageServiceKey { get; set; }
 
     public string? QADeploymentName { get; set; }
+
+    public string? CustomTextClassificationEndpoint { get; set; }
+
+    public string? CustomTextClassificationKey { get; set; }
+
+    public string? CustomTextClassificationProjectName { get; set; }
+
+    public string? CustomTextClassificationDeploymentName { get; set; }
 }
