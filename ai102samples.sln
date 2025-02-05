@@ -60,6 +60,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "go-fish", "go-fish", "{6E6B
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp", "src\Data\AOI\sample-code\go-fish\CSharp.csproj", "{E453CB28-7CC7-FE5B-7534-109A89BEC149}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "articles", "articles", "{4A54463D-9883-4C70-8DDB-1A412822E1A7}"
+	ProjectSection(SolutionItems) = preProject
+		src\Data\TextAnalysis\articles\Article 1.txt = src\Data\TextAnalysis\articles\Article 1.txt
+		src\Data\TextAnalysis\articles\Article 10.txt = src\Data\TextAnalysis\articles\Article 10.txt
+		src\Data\TextAnalysis\articles\Article 11.txt = src\Data\TextAnalysis\articles\Article 11.txt
+		src\Data\TextAnalysis\articles\Article 12.txt = src\Data\TextAnalysis\articles\Article 12.txt
+		src\Data\TextAnalysis\articles\Article 13.txt = src\Data\TextAnalysis\articles\Article 13.txt
+		src\Data\TextAnalysis\articles\Article 2.txt = src\Data\TextAnalysis\articles\Article 2.txt
+		src\Data\TextAnalysis\articles\Article 3.txt = src\Data\TextAnalysis\articles\Article 3.txt
+		src\Data\TextAnalysis\articles\Article 4.txt = src\Data\TextAnalysis\articles\Article 4.txt
+		src\Data\TextAnalysis\articles\Article 5.txt = src\Data\TextAnalysis\articles\Article 5.txt
+		src\Data\TextAnalysis\articles\Article 6.txt = src\Data\TextAnalysis\articles\Article 6.txt
+		src\Data\TextAnalysis\articles\Article 7.txt = src\Data\TextAnalysis\articles\Article 7.txt
+		src\Data\TextAnalysis\articles\Article 8.txt = src\Data\TextAnalysis\articles\Article 8.txt
+		src\Data\TextAnalysis\articles\Article 9.txt = src\Data\TextAnalysis\articles\Article 9.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -102,6 +119,7 @@ Global
 		{D87856C5-5231-42AB-91C1-1C68ABC708B2} = {5856DCAC-8B74-41A1-80A0-B3DD74A9CFB4}
 		{6E6B879D-F447-4A12-93A7-4EBCD4206B27} = {5856DCAC-8B74-41A1-80A0-B3DD74A9CFB4}
 		{E453CB28-7CC7-FE5B-7534-109A89BEC149} = {6E6B879D-F447-4A12-93A7-4EBCD4206B27}
+		{4A54463D-9883-4C70-8DDB-1A412822E1A7} = {49337F50-6C15-4A16-ACDF-392D93C368BB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AFD12154-DC24-4166-9BDA-2EEF93FE97BE}
