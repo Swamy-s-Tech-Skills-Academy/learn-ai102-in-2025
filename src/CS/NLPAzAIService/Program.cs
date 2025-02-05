@@ -15,7 +15,7 @@ AzAISvcAppConfiguration appConfig = host.Services.GetRequiredService<AzAISvcAppC
 
 // Custom Text Classification with Azure AI Service
 // Get config settings from AppSettings
-if (string.IsNullOrEmpty(appConfig.AiServicesEndpoint) || string.IsNullOrEmpty(appConfig.AiServicesKey))
+if (string.IsNullOrEmpty(appConfig.CustomTextClassificationEndpoint) || string.IsNullOrEmpty(appConfig.CustomTextClassificationKey))
 {
     WriteLine("Please check your appsettings.json file for missing or incorrect values.");
     return;
@@ -28,7 +28,6 @@ string deploymentName = appConfig.CustomTextClassificationDeploymentName!;
 
 try
 {
-    // Create client using endpoint and key
     // Create client using endpoint and key
     AzureKeyCredential credentials = new(customTextClassificationKey);
     Uri endpoint = new(customTextClassificationEndpoint);
