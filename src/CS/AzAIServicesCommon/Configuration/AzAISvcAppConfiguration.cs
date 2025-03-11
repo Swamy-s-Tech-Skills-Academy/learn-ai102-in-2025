@@ -33,4 +33,10 @@ public class AzAISvcAppConfiguration
     public string? CustomTextClassificationProjectName { get; set; }
 
     public string? CustomTextClassificationDeploymentName { get; set; }
+
+    public string? TranslatorServiceEndpoint { get; set; }
+
+    public string? TranslatorServiceKey { get; set; }
+
+    public string? TranslatorServiceRegion { get; set; }
 }

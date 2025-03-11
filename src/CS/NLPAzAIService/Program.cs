@@ -6,12 +6,33 @@ using HeaderFooter.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NLPAzAIService.Services;
+using System.Text;
 
 using IHost host = IHostExtensions.GetHostBuilder(args);
 
 IHeader header = host.Services.GetRequiredService<IHeader>();
 IFooter footer = host.Services.GetRequiredService<IFooter>();
 AzAISvcAppConfiguration appConfig = host.Services.GetRequiredService<AzAISvcAppConfiguration>();
+
+// 6. Custom Text Classification with Azure AI Service
+// Get config settings from AppSettings
+if (string.IsNullOrEmpty(appConfig.TranslatorServiceEndpoint) || string.IsNullOrEmpty(appConfig.TranslatorServiceKey) || string.IsNullOrEmpty(appConfig.TranslatorServiceRegion))
+{
+    WriteLine("Please check your appsettings.json file for missing or incorrect values.");
+    return;
+}
+
+string translatorEndpoint = appConfig.TranslatorServiceEndpoint!;
+string cogSvcKey = appConfig.TranslatorServiceKey!;
+string cogSvcRegion = appConfig.TranslatorServiceRegion!;
+
+// Set console encoding to unicode
+Console.InputEncoding = Encoding.Unicode;
+Console.OutputEncoding = Encoding.Unicode;
+
+// 6. Custom Text Classification with Azure AI Service
+
+// ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** 
 
 // Custom Text Classification with Azure AI Service
 // Get config settings from AppSettings
