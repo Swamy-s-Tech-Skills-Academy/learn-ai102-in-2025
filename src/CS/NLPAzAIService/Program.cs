@@ -6,12 +6,80 @@ using HeaderFooter.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NLPAzAIService.Services;
+using System.Text;
 
 using IHost host = IHostExtensions.GetHostBuilder(args);
 
 IHeader header = host.Services.GetRequiredService<IHeader>();
 IFooter footer = host.Services.GetRequiredService<IFooter>();
 AzAISvcAppConfiguration appConfig = host.Services.GetRequiredService<AzAISvcAppConfiguration>();
+
+// 6. Custom Text Classification with Azure AI Service
+// Get config settings from AppSettings
+if (string.IsNullOrEmpty(appConfig.TranslatorServiceEndpoint) || string.IsNullOrEmpty(appConfig.TranslatorServiceKey) || string.IsNullOrEmpty(appConfig.TranslatorServiceRegion))
+{
+    WriteLine("Please check your appsettings.json file for missing or incorrect values.");
+    return;
+}
+
+string translatorEndpoint = appConfig.TranslatorServiceEndpoint!;
+string cogSvcKey = appConfig.TranslatorServiceKey!;
+string cogSvcRegion = appConfig.TranslatorServiceRegion!;
+
+// Set console encoding to unicode
+Console.InputEncoding = Encoding.Unicode;
+Console.OutputEncoding = Encoding.Unicode;
+
+var folderPath = Path.GetFullPath(@"D:\STSA\learn-ai102-in-2025\src\Data\TextAnalysis\reviews");
+DirectoryInfo folder = new(folderPath);
+
+foreach (var file in folder.GetFiles("*.txt"))
+{
+    // Read the file contents
+    Console.WriteLine("\n-------------\n" + file.Name);
+    StreamReader sr = file.OpenText();
+    var text = sr.ReadToEnd();
+    sr.Close();
+    Console.WriteLine("\n" + text);
+
+    // Detect the language
+    string language = await GetLanguage(text);
+    Console.WriteLine("Language: " + language);
+
+    // Translate if not already English
+    if (language != "en")
+    {
+        string translatedText = await Translate(text, language);
+        Console.WriteLine("\nTranslation:\n" + translatedText);
+    }
+}
+
+static async Task<string> GetLanguage(string text)
+{
+    // Default language is English
+    string language = "en";
+
+    // Use the Azure AI Translator detect function
+
+
+    // return the language
+    return language;
+}
+
+static async Task<string> Translate(string text, string sourceLanguage)
+{
+    string translation = "";
+
+    // Use the Azure AI Translator translate function
+
+
+    // Return the translation
+    return translation;
+
+}
+// 6. Custom Text Classification with Azure AI Service
+
+// ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** ***** 
 
 // Custom Text Classification with Azure AI Service
 // Get config settings from AppSettings
