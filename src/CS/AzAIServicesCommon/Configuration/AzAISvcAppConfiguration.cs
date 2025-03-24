@@ -39,4 +39,10 @@ public class AzAISvcAppConfiguration
     public string? TranslatorServiceKey { get; set; }
 
     public string? TranslatorServiceRegion { get; set; }
+
+    public string? SpeechEndpoint { get; set; }
+
+    public string? SpeechKey { get; set; }
+
+    public string? SpeechRegion { get; set; }
 }
