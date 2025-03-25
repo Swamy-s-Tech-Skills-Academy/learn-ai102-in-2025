@@ -8,12 +8,111 @@ using Microsoft.Extensions.Hosting;
 using NLPAzAIService.Services;
 using System.Text;
 using Azure.AI.Translation.Text;
+using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
 
 using IHost host = IHostExtensions.GetHostBuilder(args);
 
 IHeader header = host.Services.GetRequiredService<IHeader>();
 IFooter footer = host.Services.GetRequiredService<IFooter>();
 AzAISvcAppConfiguration appConfig = host.Services.GetRequiredService<AzAISvcAppConfiguration>();
+
+// 7. Recognize and synthesize speech
+SpeechConfig speechConfig;
+
+if (string.IsNullOrEmpty(appConfig.SpeechEndpoint) || string.IsNullOrEmpty(appConfig.SpeechKey) || string.IsNullOrEmpty(appConfig.SpeechRegion))
+{
+    WriteLine("Please check your appsettings.json file for missing or incorrect values.");
+    return;
+}
+string aiSvcKey = appConfig.SpeechKey;
+string aiSvcRegion = appConfig.SpeechRegion;
+
+// Configure speech service
+// Configure speech service
+speechConfig = SpeechConfig.FromSubscription(aiSvcKey, aiSvcRegion);
+Console.WriteLine("Ready to use speech service in " + speechConfig.Region);
+
+// Configure voice
+speechConfig.SpeechSynthesisVoiceName = "en-US-AriaNeural";
+
+// Get spoken input
+string command = "";
+command = await TranscribeCommand();
+if (command.ToLower() == "what time is it?")
+{
+    await TellTime();
+}
+
+async Task<string> TranscribeCommand()
+{
+    string command = "";
+
+    // Configure speech recognition
+    using AudioConfig audioConfig = AudioConfig.FromDefaultMicrophoneInput();
+    using SpeechRecognizer speechRecognizer = new SpeechRecognizer(speechConfig, audioConfig);
+    Console.WriteLine("Speak now...");
+
+    // Process speech input
+    SpeechRecognitionResult speech = await speechRecognizer.RecognizeOnceAsync();
+    if (speech.Reason == ResultReason.RecognizedSpeech)
+    {
+        command = speech.Text;
+        Console.WriteLine(command);
+    }
+    else
+    {
+        Console.WriteLine(speech.Reason);
+        if (speech.Reason == ResultReason.Canceled)
+        {
+            var cancellation = CancellationDetails.FromResult(speech);
+            Console.WriteLine(cancellation.Reason);
+            Console.WriteLine(cancellation.ErrorDetails);
+        }
+    }
+
+    // Return the command
+    return command;
+}
+
+async Task TellTime()
+{
+    var now = DateTime.Now;
+    string responseText = "The time is " + now.Hour.ToString() + ":" + now.Minute.ToString("D2");
+
+    // Configure speech synthesis
+    //speechConfig.SpeechSynthesisVoiceName = "en-GB-RyanNeural";
+    speechConfig.SpeechSynthesisVoiceName = "en-GB-LibbyNeural";
+    using SpeechSynthesizer speechSynthesizer = new(speechConfig);
+
+    // Synthesize spoken output
+    //SpeechSynthesisResult speak = await speechSynthesizer.SpeakTextAsync(responseText);
+    //if (speak.Reason != ResultReason.SynthesizingAudioCompleted)
+    //{
+    //    Console.WriteLine(speak.Reason);
+    //}
+    // Synthesize spoken output
+    string responseSsml = $@"
+     <speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'>
+         <voice name='en-GB-LibbyNeural'>
+             {responseText}
+             <break strength='weak'/>
+             Time to end this lab!
+         </voice>
+     </speak>";
+    SpeechSynthesisResult speak = await speechSynthesizer.SpeakSsmlAsync(responseSsml);
+    if (speak.Reason != ResultReason.SynthesizingAudioCompleted)
+    {
+        Console.WriteLine(speak.Reason);
+    }
+
+    // Print the response
+    Console.WriteLine(responseText);
+}
+// 7. Recognize and synthesize speech
+
+
+// ***************************************************************************
 
 // 6. Custom Text Classification with Azure AI Service
 // Get config settings from AppSettings
