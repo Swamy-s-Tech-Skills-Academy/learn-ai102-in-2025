@@ -10,6 +10,7 @@ using System.Text;
 using Azure.AI.Translation.Text;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
+using System.Media;
 
 using IHost host = IHostExtensions.GetHostBuilder(args);
 
@@ -29,7 +30,6 @@ string aiSvcKey = appConfig.SpeechKey;
 string aiSvcRegion = appConfig.SpeechRegion;
 
 // Configure speech service
-// Configure speech service
 speechConfig = SpeechConfig.FromSubscription(aiSvcKey, aiSvcRegion);
 Console.WriteLine("Ready to use speech service in " + speechConfig.Region);
 
@@ -48,10 +48,17 @@ async Task<string> TranscribeCommand()
 {
     string command = "";
 
+    //// Configure speech recognition
+    //using AudioConfig audioConfig = AudioConfig.FromDefaultMicrophoneInput();
+    //using SpeechRecognizer speechRecognizer = new(speechConfig, audioConfig);
+    //Console.WriteLine("Speak now...");
+
     // Configure speech recognition
-    using AudioConfig audioConfig = AudioConfig.FromDefaultMicrophoneInput();
+    string audioFile = @"D:\GitHub\speaker-series-2025\0325_MSFT_Reactor_AI102_S24\Data\time.wav";
+    SoundPlayer wavPlayer = new SoundPlayer(audioFile);
+    wavPlayer.Play();
+    using AudioConfig audioConfig = AudioConfig.FromWavFileInput(audioFile);
     using SpeechRecognizer speechRecognizer = new SpeechRecognizer(speechConfig, audioConfig);
-    Console.WriteLine("Speak now...");
 
     // Process speech input
     SpeechRecognitionResult speech = await speechRecognizer.RecognizeOnceAsync();
@@ -91,6 +98,7 @@ async Task TellTime()
     //{
     //    Console.WriteLine(speak.Reason);
     //}
+
     // Synthesize spoken output
     string responseSsml = $@"
      <speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'>
