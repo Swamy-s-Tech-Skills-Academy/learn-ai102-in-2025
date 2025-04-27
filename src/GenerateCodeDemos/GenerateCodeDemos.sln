@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CS", "CS", "{043C5643-8786-2C14-4347-0E27D1FB2DA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tpp.Algo", "CS\Tpp.Algo\Tpp.Algo.csproj", "{AEF0416A-1A23-70EB-AAF0-7CD17F70E253}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AEF0416A-1A23-70EB-AAF0-7CD17F70E253}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEF0416A-1A23-70EB-AAF0-7CD17F70E253}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEF0416A-1A23-70EB-AAF0-7CD17F70E253}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEF0416A-1A23-70EB-AAF0-7CD17F70E253}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AEF0416A-1A23-70EB-AAF0-7CD17F70E253} = {043C5643-8786-2C14-4347-0E27D1FB2DA7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F0C355A1-69A8-4B38-BB35-F02B7BC2B14C}
+	EndGlobalSection
+EndGlobal

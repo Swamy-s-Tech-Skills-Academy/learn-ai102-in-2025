@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shope - Your Online Store</title>
+
+    <!-- Tailwind CSS CDN version 3.4.17-->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome CDN version 6.5.0-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Fonts. Please use Roboto font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* Ensure the footer stays at the bottom */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .content {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-white text-lg font-bold">Shope</a>
+            <ul class="flex space-x-4">
+                <li><a href="#" class="text-white hover:text-gray-300">Home</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300">Products</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300">About</a></li>
+                <li><a href="#" class="text-white hover:text-gray-300">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content with list of top 10 products. Paging -->
+    <div class="container mx-auto mt-8 content">
+        <h1 class="text-2xl font-bold text-center mb-4">Top 10 Products</h1>
+        <table class="min-w-full bg-white border border-gray-300 shadow-md rounded-lg overflow-hidden">
+            <thead class="bg-gray-800 text-white">
+                <tr>
+                    <th class="py-2 px-4">#</th>
+                    <th class="py-2 px-4">Product Name</th>
+                    <th class="py-2 px-4">Category</th>
+                    <th class="py-2 px-4">Price</th>
+                    <th class="py-2 px-4">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sample product rows -->
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="py-2 px-4">1</td>
+                    <td class="py-2 px-4">Product 1</td>
+                    <td class="py-2 px-4">Category 1</td>
+                    <td class="py-2 px-4">$10.00</td>
+                    <td class="py-2 px-4"><button class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">Add
+                            to Cart</button></td>
+                </tr>
+                <!-- Repeat for other products -->
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="py-2 px-4">2</td>
+                    <td class="py-2 px-4">Product 2</td>
+                    <td class="py-2 px-4">Category 2</td>
+                    <td class="py-2 px-4">$20.00</td>
+                    <td class="py-2 px-4"><button class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">Add
+                            to Cart</button></td>
+                </tr>
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="py-2 px-4">3</td>
+                    <td class="py-2 px-4">Product 3</td>
+                    <td class="py-2 px-4">Category 3</td>
+                    <td class="py-2 px-4">$30.00</td>
+                    <td class="py-2 px-4"><button class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">Add
+                            to Cart</button></td>
+                </tr>
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="py-2 px-4">4</td>
+                    <td class="py-2 px-4">Product 4</td>
+                    <td class="py-2 px-4">Category 4</td>
+                    <td class="py-2 px-4">$40.00</td>
+                    <td class="py-2 px-4"><button class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">Add
+                            to Cart</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="flex justify-center mt-4">
+            <nav aria-label="Page navigation">
+                <ul class="inline-flex -space-x-px">
+                    <li><a href="#" class="px-3 py-1 text-gray-500 hover:bg-gray-200">Previous</a></li>
+                    <li><a href="#" class="px-3 py-1 text-gray-500 hover:bg-gray-200">1</a></li>
+                    <li><a href="#" class="px-3 py-1 text-gray-500 hover:bg-gray-200">2</a></li>
+                    <li><a href="#" class="px-3 py-1 text-gray-500 hover:bg-gray-200">3</a></li>
+                    <li><a href="#" class="px-3 py-1 text-gray -500 hover:bg-gray-200">Next</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2023 Shope. All rights reserved.</p>
+            <p>Follow us on:
+                <a href="#" class="text-blue-400 hover:text-blue-600">Facebook</a>,
+                <a href="#" class="text-blue-400 hover:text-blue-600">Twitter</a>,
+                <a href="#" class="text-blue-400 hover:text-blue-600">Instagram</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
