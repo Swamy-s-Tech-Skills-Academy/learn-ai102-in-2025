@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eShop - All Your Shopping Needs</title>
+
+    <!-- Tailwind CSS CDN version 3.4.17-->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome CDN version 6.5.0-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Fonts. Please use Roboto font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* Ensure the footer stays at the bottom */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .content {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body> <!-- Modern Gradient Navbar with Dark Purple/Teal Theme -->
+    <nav class="bg-gradient-to-r from-purple-800 via-purple-900 to-teal-800 p-4 shadow-2xl">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#"
+                class="text-white text-2xl font-bold flex items-center hover:text-yellow-300 transition duration-300">
+                <i class="fas fa-shopping-bag mr-2 text-yellow-300"></i>eShop
+            </a>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="#"
+                        class="text-white hover:text-yellow-300 transition duration-300 px-3 py-2 rounded-lg hover:bg-white hover:bg-opacity-10">Home</a>
+                </li>
+                <li><a href="#"
+                        class="text-white hover:text-yellow-300 transition duration-300 px-3 py-2 rounded-lg hover:bg-white hover:bg-opacity-10">Products</a>
+                </li>
+                <li><a href="#"
+                        class="text-white hover:text-yellow-300 transition duration-300 px-3 py-2 rounded-lg hover:bg-white hover:bg-opacity-10">Categories</a>
+                </li>
+                <li><a href="#"
+                        class="text-white hover:text-yellow-300 transition duration-300 px-3 py-2 rounded-lg hover:bg-white hover:bg-opacity-10">About</a>
+                </li>
+                <li><a href="#"
+                        class="text-white hover:text-yellow-300 transition duration-300 px-3 py-2 rounded-lg hover:bg-white hover:bg-opacity-10">Contact</a>
+                </li>
+            </ul>
+            <div class="flex items-center space-x-4">
+                <!-- Search Icon -->
+                <a href="#"
+                    class="text-white hover:text-yellow-300 transition duration-300 p-2 rounded-full hover:bg-white hover:bg-opacity-10">
+                    <i class="fas fa-search text-lg"></i>
+                </a>
+                <!-- Shopping Cart -->
+                <a href="#"
+                    class="text-white hover:text-yellow-300 transition duration-300 relative p-2 rounded-full hover:bg-white hover:bg-opacity-10">
+                    <i class="fas fa-shopping-cart text-lg"></i>
+                    <span
+                        class="absolute -top-1 -right-1 bg-gradient-to-r from-orange-400 to-red-500 text-white text-xs rounded-full px-2 py-1 animate-pulse">3</span>
+                </a>
+                <!-- User Login -->
+                <a href="#"
+                    class="text-white hover:text-yellow-300 transition duration-300 p-2 rounded-full hover:bg-white hover:bg-opacity-10">
+                    <i class="fas fa-user text-lg"></i>
+                </a>
+                <!-- Mobile Menu Button -->
+                <button
+                    class="md:hidden text-white focus:outline-none p-2 rounded-lg hover:bg-white hover:bg-opacity-10">
+                    <i class="fas fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </nav><!-- Enhanced Carousel Section -->
+    <div class="container mx-auto mt-8 content">
+        <h1 class="text-3xl font-bold text-center mb-4 text-gray-800">Welcome to eShop</h1>
+        <p class="text-center mb-8 text-lg text-gray-600">Your one-stop shop for all your needs!</p>
+
+        <!-- Enhanced carousel with modern design -->
+        <div
+            class="relative bg-gradient-to-r from-blue-500 to-purple-600 h-64 rounded-lg overflow-hidden shadow-lg mb-8">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white">
+                    <h2 class="text-4xl font-bold mb-4">Special Offers</h2>
+                    <p class="text-xl mb-4">Up to 50% off on selected items!</p>
+                    <button
+                        class="bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                        Shop Now
+                    </button>
+                </div>
+            </div>
+            <!-- Carousel navigation dots -->
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                <div class="w-3 h-3 bg-white rounded-full opacity-50"></div>
+                <div class="w-3 h-3 bg-white rounded-full"></div>
+                <div class="w-3 h-3 bg-white rounded-full opacity-50"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Table with List of Products -->
+    <div class="container mx-auto mt-8 content">
+        <h2 class="text-xl font-bold text-center mb-4">Top 10 Products</h2>
+
+        <table class="min-w-full bg-white border border-gray-300 shadow-md rounded-lg overflow-hidden">
+            <thead class="bg-gray-800 text-white">
+                <tr>
+                    <th class="py-2 px-4">#</th>
+                    <th class="py-2 px-4">Product Name</th>
+                    <th class="py-2 px-4">Category</th>
+                    <th class="py-2 px-4">Price</th>
+                    <th class="py-2 px-4">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Sample product rows -->
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="py-2 px-4">1</td>
+                    <td class="py-2 px-4">Product 1</td>
+                    <td class="py-2 px-4">Category A</td>
+                    <td class="py-2 px-4">$10.00</td>
+                    <td class="py-2 px-4"><button class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">Add
+                            to Cart</button></td>
+                </tr>
+                <!-- Repeat for more products -->
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="py-2 px-4">2</td>
+                    <td class="py-2 px-4">Product 2</td>
+                    <td class="py-2 px-4">Category B</td>
+                    <td class="py-2 px-4">$20.00</td>
+                    <td class="py-2 px-4"><button class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">Add
+                            to Cart</button></td>
+                </tr>
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="py-2 px-4">3</td>
+                    <td class="py-2 px-4">Product 3</td>
+                    <td class="py-2 px-4">Category C</td>
+                    <td class="py-2 px-4">$30.00</td>
+                    <td class="py-2 px-4"><button class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">Add
+                            to Cart</button></td>
+                </tr>
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="py-2 px-4">4</td>
+                    <td class="py-2 px-4">Product 4</td>
+                    <td class="py-2 px-4">Category D</td>
+                    <td class="py-2 px-4">$40.00</td>
+                    <td class="py-2 px-4"><button class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">Add
+                            to Cart</button></td>
+                </tr>
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="py-2 px-4">5</td>
+                    <td class="py-2 px-4">Product 5</td>
+                    <td class="py-2 px-4">Category E</td>
+                    <td class="py-2 px-4">$50.00</td>
+                    <td class="py-2 px-4"><button class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">Add
+                            to Cart</button></td>
+                </tr>
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="py-2 px-4">6</td>
+                    <td class="py-2 px-4">Product 6</td>
+                    <td class="py-2 px-4">Category F</td>
+                    <td class="py-2 px-4">$60.00</td>
+                    <td class="py-2 px-4"><button class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">Add
+                            to Cart</button></td>
+                </tr>
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="py-2 px-4">7</td>
+                    <td class="py-2 px-4">Product 7</td>
+                    <td class="py-2 px-4">Category G</td>
+                    <td class="py-2 px-4">$70.00</td>
+                    <td class="py-2 px-4"><button class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">Add
+                            to Cart</button></td>
+                </tr>
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="py-2 px-4">8</td>
+                    <td class="py-2 px-4">Product 8</td>
+                    <td class="py-2 px-4">Category H</td>
+                    <td class="py-2 px-4">$80.00</td>
+                    <td class="py-2 px-4"><button class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">Add
+                            to Cart</button></td>
+                </tr>
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="py-2 px-4">9</td>
+                    <td class="py-2 px-4">Product 9</td>
+                    <td class="py-2 px-4">Category I</td>
+                    <td class="py-2 px-4">$90.00</td>
+                    <td class="py-2 px-4"><button class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">Add
+                            to Cart</button></td>
+                </tr>
+                <tr class="border-b hover:bg-gray-100">
+                    <td class="py-2 px-4">10</td>
+                    <td class="py-2 px-4">Product 10</td>
+                    <td class="py-2 px-4">Category J</td>
+                    <td class="py-2 px-4">$100.00</td>
+                    <td class="py-2 px-4"><button class="bg-blue-500 text-white py-1 px-3 rounded hover:bg-blue-600">Add
+                            to Cart</button></td>
+                </tr>
+            </tbody>
+        </table> <!-- Enhanced Pagination -->
+        <div class="flex justify-center mt-6">
+            <nav aria-label="Page navigation">
+                <ul class="inline-flex -space-x-px rounded-md shadow-sm">
+                    <li>
+                        <a href="#"
+                            class="px-3 py-2 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700">
+                            <i class="fas fa-chevron-left"></i> Previous
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">1</a>
+                    </li>
+                    <li>
+                        <a href="#" class="px-3 py-2 leading-tight text-white bg-blue-600 border border-blue-600">2</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">3</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700">
+                            Next <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div> <!-- Modern Gradient Footer with Purple/Teal Theme -->
+    <footer
+        class="bg-gradient-to-r from-purple-900 via-slate-800 to-teal-900 text-white py-12 mt-12 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-40 h-40 bg-yellow-300 rounded-full -translate-x-20 -translate-y-20">
+            </div>
+            <div class="absolute bottom-0 right-0 w-32 h-32 bg-teal-300 rounded-full translate-x-16 translate-y-16">
+            </div>
+            <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-purple-300 rounded-full"></div>
+        </div>
+
+        <div class="container mx-auto relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-shopping-bag mr-3 text-yellow-300"></i>
+                        <span
+                            class="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">eShop</span>
+                    </h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed">Your trusted online shopping destination for quality
+                        products at competitive prices. Experience shopping like never before.</p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="bg-gradient-to-r from-blue-500 to-blue-600 p-3 rounded-full hover:from-blue-600 hover:to-blue-700 transition duration-300 transform hover:scale-110">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#"
+                            class="bg-gradient-to-r from-sky-400 to-sky-500 p-3 rounded-full hover:from-sky-500 hover:to-sky-600 transition duration-300 transform hover:scale-110">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#"
+                            class="bg-gradient-to-r from-pink-500 to-rose-500 p-3 rounded-full hover:from-pink-600 hover:to-rose-600 transition duration-300 transform hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#"
+                            class="bg-gradient-to-r from-blue-600 to-blue-700 p-3 rounded-full hover:from-blue-700 hover:to-blue-800 transition duration-300 transform hover:scale-110">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-6 text-yellow-300 flex items-center">
+                        <i class="fas fa-link mr-2"></i>Quick Links
+                    </h4>
+                    <ul class="space-y-3">
+                        <li><a href="#"
+                                class="text-gray-300 hover:text-yellow-300 transition duration-300 flex items-center group">
+                                <i
+                                    class="fas fa-chevron-right mr-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>Home</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-300 hover:text-yellow-300 transition duration-300 flex items-center group">
+                                <i
+                                    class="fas fa-chevron-right mr-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>Products</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-300 hover:text-yellow-300 transition duration-300 flex items-center group">
+                                <i
+                                    class="fas fa-chevron-right mr-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>Categories</a>
+                        </li>
+                        <li><a href="#"
+                                class="text-gray-300 hover:text-yellow-300 transition duration-300 flex items-center group">
+                                <i
+                                    class="fas fa-chevron-right mr-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>About
+                                Us</a></li>
+                        <li><a href="#"
+                                class="text-gray-300 hover:text-yellow-300 transition duration-300 flex items-center group">
+                                <i
+                                    class="fas fa-chevron-right mr-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-6 text-teal-300 flex items-center">
+                        <i class="fas fa-headset mr-2"></i>Customer Service
+                    </h4>
+                    <ul class="space-y-3">
+                        <li><a href="#"
+                                class="text-gray-300 hover:text-teal-300 transition duration-300 flex items-center group">
+                                <i
+                                    class="fas fa-chevron-right mr-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>Help
+                                Center</a></li>
+                        <li><a href="#"
+                                class="text-gray-300 hover:text-teal-300 transition duration-300 flex items-center group">
+                                <i
+                                    class="fas fa-chevron-right mr-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>Returns
+                                & Refunds</a></li>
+                        <li><a href="#"
+                                class="text-gray-300 hover:text-teal-300 transition duration-300 flex items-center group">
+                                <i
+                                    class="fas fa-chevron-right mr-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>Shipping
+                                Info</a></li>
+                        <li><a href="#"
+                                class="text-gray-300 hover:text-teal-300 transition duration-300 flex items-center group">
+                                <i
+                                    class="fas fa-chevron-right mr-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>Track
+                                Your Order</a></li>
+                        <li><a href="#"
+                                class="text-gray-300 hover:text-teal-300 transition duration-300 flex items-center group">
+                                <i
+                                    class="fas fa-chevron-right mr-2 text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>FAQ</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div>
+                    <h4 class="text-xl font-semibold mb-6 text-orange-300 flex items-center">
+                        <i class="fas fa-envelope mr-2"></i>Stay Connected
+                    </h4>
+                    <p class="text-gray-300 mb-6 leading-relaxed">Subscribe to get updates on new products, exclusive
+                        offers, and special discounts!</p>
+                    <div class="space-y-4">
+                        <div class="flex">
+                            <input type="email" placeholder="Enter your email"
+                                class="flex-1 px-4 py-3 bg-slate-700 bg-opacity-50 text-white rounded-l-lg focus:outline-none focus:ring-2 focus:ring-yellow-300 border border-slate-600">
+                            <button
+                                class="bg-gradient-to-r from-yellow-400 to-orange-500 text-slate-900 px-6 py-3 rounded-r-lg hover:from-yellow-500 hover:to-orange-600 transition duration-300 font-semibold">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-gray-400">
+                            <i class="fas fa-shield-alt text-green-400"></i>
+                            <span>Your privacy is protected</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-slate-600 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                    <p class="text-gray-300 flex items-center">
+                        <i class="fas fa-copyright mr-2"></i>
+                        2025 eShop. All rights reserved.
+                    </p>
+                    <div class="hidden md:flex items-center space-x-2 text-gray-400">
+                        <i class="fas fa-heart text-red-400"></i>
+                        <span class="text-sm">Made with love</span>
+                    </div>
+                </div>
+                <div class="flex flex-wrap justify-center space-x-6">
+                    <a href="#"
+                        class="text-gray-300 hover:text-purple-300 transition duration-300 text-sm flex items-center">
+                        <i class="fas fa-user-shield mr-1"></i>Privacy Policy
+                    </a>
+                    <a href="#"
+                        class="text-gray-300 hover:text-purple-300 transition duration-300 text-sm flex items-center">
+                        <i class="fas fa-file-contract mr-1"></i>Terms of Service
+                    </a>
+                    <a href="#"
+                        class="text-gray-300 hover:text-purple-300 transition duration-300 text-sm flex items-center">
+                        <i class="fas fa-cookie-bite mr-1"></i>Cookie Policy
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
